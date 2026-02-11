@@ -1,3 +1,18 @@
 from django.db import models
 
-# Create your models here.
+from utils.mixins import SoftDeleteMixin
+
+
+class Author(SoftDeleteMixin, models.Model):
+    name = models.CharField(max_length=64, blank=False)
+    is_deleted = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True, editable=False)
+    updated_at = models.DateTimeField(auto_now=True, editable=False)
+    deleted_at = models.DateTimeField(null=True, editable=False)
+
+    class Meta:
+        db_table = 'authors'
+        ordering = ['-created_at']
+
+    def __str__(self):
+        return self.name
