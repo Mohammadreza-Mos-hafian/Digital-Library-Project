@@ -16,6 +16,17 @@ files = [
 tests = ["mypy (>=1.14.0)", "pytest", "pytest-asyncio"]
 
 [[package]]
+name = "decouple"
+version = "0.0.7"
+description = "Decoupling logic"
+optional = false
+python-versions = ">=3.7"
+groups = ["main"]
+files = [
+    {file = "decouple-0.0.7.tar.gz", hash = "sha256:c253c1cc62b76e9720a066f334552548c6de1884bc3bdf456ddb62d61b867b09"},
+]
+
+[[package]]
 name = "django"
 version = "6.0.2"
 description = "A high-level Python web framework that encourages rapid development and clean, pragmatic design."
@@ -101,4 +112,4 @@ files = [
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.14"
-content-hash = "033ebfef8db16dfb23c40b7c19cb4f70354316aa28a10caa0e809ecf0fb646ba"
+content-hash = "f9c26f8db5362e07c598ad705723775e7752b0447cf0b343b9a56bc4cd47d7e1"
