@@ -1,0 +1,75 @@
+# ======================================
+# Python / Bytecode
+# ======================================
+__pycache__/
+*.py[cod]
+*$py.class
+
+# ======================================
+# Virtual Environments
+# ======================================
+.venv/
+venv/
+.env
+.env.local
+.env.dev
+.env.prod
+.env.docker
+
+# ======================================
+# Django Specific
+# ======================================
+db.sqlite3
+*.sqlite3
+
+# Media & Static files (generated)
+media/
+staticfiles/
+uploads/
+
+# Django collectstatic output (don't track)
+static_root/
+STATIC_ROOT/
+
+# ======================================
+# Tests / Coverage / Type Checking
+# ======================================
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# ======================================
+# Build & Packaging
+# ======================================
+build/
+dist/
+*.egg-info/
+*.spec
+
+# ======================================
+# IDE / Editor
+# ======================================
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ======================================
+# Logs
+# ======================================
+*.log
+
+# ======================================
+# System / OS Files
+# ======================================
+.DS_Store
+Thumbs.db
+
+# ======================================
+# Docker
+# ======================================
+*.pid
+*.tar
