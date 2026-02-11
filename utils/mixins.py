@@ -1,11 +1,11 @@
 from django.db import models
 from django.utils import timezone
 
-import managers
+from .managers import SoftDeleteManager
 
 
 class SoftDeleteMixin(models.Model):
-    objects = managers.SoftDeleteManager()
+    objects = SoftDeleteManager()
 
     class Meta:
         abstract = True
