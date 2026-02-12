@@ -7,7 +7,7 @@ from rest_framework import status
 def home_page(request):
     return Response(
         {
-            'message': 'Hello User'
+            'message': 'Hi, Welcome to Digital Library App.'
         },
         status=status.HTTP_200_OK
     )
