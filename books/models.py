@@ -7,6 +7,7 @@ class Book(SoftDeleteMixin, models.Model):
     title = models.CharField(max_length=64, blank=False)
     edition = models.PositiveSmallIntegerField(default=1)
     published_date = models.DateField(null=False, blank=False)
+    price = models.DecimalField(max_digits=6, decimal_places=2, default=0.00)
     author = models.ForeignKey('authors.Author', on_delete=models.CASCADE, related_name='books')
     categories = models.ManyToManyField('categories.Category', related_name='books')
     is_deleted = models.BooleanField(default=False)
