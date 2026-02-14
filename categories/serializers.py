@@ -12,7 +12,7 @@ class CategorySerializer(serializers.ModelSerializer):
         read_only_fields = ['id']
 
     def validate_name(self, value: str):
-        category_name = ' '.join(value.strip().split()).capitalize()
+        category_name = ' '.join(value.strip().split()).title()
 
         if len(category_name) < 3:
             raise serializers.ValidationError('name must be at least 3 characters long.')

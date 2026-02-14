@@ -13,7 +13,7 @@ class AuthorSerializer(serializers.ModelSerializer):
         read_only_fields = ['id']
 
     def validate_name(self, value: str):
-        author_name = ' '.join(value.strip().split()).capitalize()
+        author_name = ' '.join(value.strip().split()).title()
 
         if len(author_name) < 3:
             raise serializers.ValidationError('name must be at least 3 characters long.')
