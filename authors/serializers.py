@@ -4,6 +4,8 @@ from rest_framework import serializers
 
 from .models import Author
 
+from utils import functions
+
 
 class AuthorSerializer(serializers.ModelSerializer):
     class Meta:
@@ -12,10 +14,14 @@ class AuthorSerializer(serializers.ModelSerializer):
         read_only_fields = ['id']
 
     def validate_name(self, value: str):
-        if len(value) < 3:
-            raise serializers.ValidationError('Author name must be at least 3 characters long.')
+        author_name = ' '.join(value.strip().split()).capitalize()
 
-        if not re.match(r'^[a-zA-Z\s]+$', value):
-            raise serializers.ValidationError('Name must contain only English letters and spaces.')
+        if len(author_name) < 3:
+            raise serializers.ValidationError('author name must be at least 3 characters long.')
 
-        return value.capitalize()
+        if not re.match(r'^[a-zA-Z\s]+$', author_name):
+            raise serializers.ValidationError('name must contain only English letters and spaces.')
+
+        functions.name_exists(self, 'author', author_name, Author)
+
+        return author_name

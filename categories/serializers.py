@@ -4,6 +4,8 @@ from rest_framework import serializers
 
 from .models import Category
 
+from utils import functions
+
 
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
@@ -12,10 +14,14 @@ class CategorySerializer(serializers.ModelSerializer):
         read_only_fields = ['id']
 
     def validate_name(self, value: str):
-        if len(value) < 3:
-            raise serializers.ValidationError('Category name must be at least 3 characters long.')
+        category_name = ' '.join(value.strip().split()).capitalize()
 
-        if not re.match(r'^[a-zA-Z\s]+$', value):
-            raise serializers.ValidationError('Name must contain only English letters and spaces.')
+        if len(category_name) < 3:
+            raise serializers.ValidationError('category name must be at least 3 characters long.')
 
-        return value.capitalize()
+        if not re.match(r'^[a-zA-Z\s]+$', category_name):
+            raise serializers.ValidationError('name must contain only English letters and spaces.')
+
+        functions.name_exists(self, 'category', category_name, Category)
+
+        return category_name
