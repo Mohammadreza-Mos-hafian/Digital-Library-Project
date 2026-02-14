@@ -1,0 +1,1 @@
+ENGLISH_LETTER = r'^[a-zA-Z\s]+$'
