@@ -22,6 +22,6 @@ class AuthorSerializer(serializers.ModelSerializer):
         if not re.match(r'^[a-zA-Z\s]+$', author_name):
             raise serializers.ValidationError('name must contain only English letters and spaces.')
 
-        functions.name_exists(self, 'author', author_name, Author)
+        functions.name_exists(self, author_name, Author)
 
         return author_name

@@ -22,6 +22,6 @@ class CategorySerializer(serializers.ModelSerializer):
         if not re.match(r'^[a-zA-Z\s]+$', category_name):
             raise serializers.ValidationError('name must contain only English letters and spaces.')
 
-        functions.name_exists(self, 'category', category_name, Category)
+        functions.name_exists(self, category_name, Category)
 
         return category_name
