@@ -5,7 +5,6 @@ from utils import functions
 from .models import Author
 
 
-
 class AuthorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Author
@@ -20,6 +19,6 @@ class AuthorSerializer(serializers.ModelSerializer):
 
         functions.contains_english_letter(author_name, 'name')
 
-        functions.name_exists(self, author_name, Author)
+        functions.is_exist(self, 'name', author_name, Author)
 
         return author_name

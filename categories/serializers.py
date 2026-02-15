@@ -19,6 +19,6 @@ class CategorySerializer(serializers.ModelSerializer):
 
         functions.contains_english_letter(category_name, 'name')
 
-        functions.name_exists(self, category_name, Category)
+        functions.is_exist(self, 'name', category_name, Category)
 
         return category_name
