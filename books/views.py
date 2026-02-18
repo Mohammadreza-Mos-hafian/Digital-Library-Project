@@ -24,7 +24,7 @@ class BookListCreateAPIView(APIView):
         if serializer.is_valid():
             instance = serializer.save()
 
-            url = reverse('books:books-details', kwargs={'pk': instance.pk})
+            url = reverse('books:book-detail', kwargs={'pk': instance.pk})
             return Response(
                 serializer.data,
                 status=status.HTTP_201_CREATED,
