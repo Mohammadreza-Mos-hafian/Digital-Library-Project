@@ -18,6 +18,7 @@ class Book(SoftDeleteMixin, models.Model):
     class Meta:
         db_table = 'books'
         ordering = ['-created_at']
+        unique_together = ('title', 'edition', 'deleted_at')
 
     def __str__(self):
         return self.title
