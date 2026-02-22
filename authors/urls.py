@@ -1,10 +1,11 @@
-from django.urls import path
+from rest_framework.routers import DefaultRouter
 
-from .views import AuthorListCreateAPIView, AuthorDetailAPIView
+from .views import AuthorViewSet
 
 app_name = 'authors'
 
-urlpatterns = [
-    path('authors/', AuthorListCreateAPIView.as_view(), name='authors-list-create'),
-    path('authors/<int:pk>/', AuthorDetailAPIView.as_view(), name='author-detail'),
-]
+router = DefaultRouter()
+
+router.register('authors', AuthorViewSet, basename='author')
+
+urlpatterns = router.urls
