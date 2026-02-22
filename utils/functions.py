@@ -6,7 +6,7 @@ from utils import regex_patterns as rgx
 
 
 def is_exist(obj, field_name: str, value: str, cls):
-    qs = cls.objects.filter(**{f'{field_name}__iexact': value})
+    qs = cls.objects.filter(**{f'{field_name}__iexact': value}, is_deleted=False)
 
     if getattr(obj, 'instance', None): qs = qs.exclude(id=obj.instance.id)
 
