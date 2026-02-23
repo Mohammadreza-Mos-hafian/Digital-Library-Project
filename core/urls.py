@@ -1,9 +1,18 @@
-from django.urls import path
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
 
-from .views import home_page
+from authors.views import AuthorViewSet
+from categories.views import CategoryViewSet
+from books.views import BookViewSet
+from core.views import home_page
 
-app_name = 'core'
+router = DefaultRouter()
+
+router.register('authors', AuthorViewSet, basename='author')
+router.register('categories', CategoryViewSet, basename='category')
+router.register('books', BookViewSet, basename='book')
 
 urlpatterns = [
-    path('', home_page)
+    path('', home_page),
+    path('api/', include(router.urls))
 ]
