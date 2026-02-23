@@ -16,8 +16,6 @@ from .models import Book
 
 
 class BookSerializer(serializers.ModelSerializer):
-    url = serializers.HyperlinkedIdentityField(view_name='book-detail')
-
     author = AuthorSerializer(read_only=True)
     author_id = serializers.PrimaryKeyRelatedField(
         queryset=Author.objects.all_without_deleted(),
@@ -35,7 +33,7 @@ class BookSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Book
-        fields = ['id', 'url', 'title', 'edition', 'published_date', 'price', 'author', 'author_id', 'categories',
+        fields = ['id', 'title', 'edition', 'published_date', 'price', 'author', 'author_id', 'categories',
                   'category_ids']
         read_only_fields = ['id']
         validators = [

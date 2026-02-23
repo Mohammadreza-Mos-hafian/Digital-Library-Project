@@ -6,11 +6,9 @@ from .models import Author
 
 
 class AuthorSerializer(serializers.ModelSerializer):
-    url = serializers.HyperlinkedIdentityField(view_name='author-detail')
-
     class Meta:
         model = Author
-        fields = ['id', 'url', 'name']
+        fields = ['id', 'name']
         read_only_fields = ['id']
 
     def validate_name(self, value: str):

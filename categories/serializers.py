@@ -6,11 +6,9 @@ from .models import Category
 
 
 class CategorySerializer(serializers.ModelSerializer):
-    url = serializers.HyperlinkedIdentityField(view_name='category-detail')
-
     class Meta:
         model = Category
-        fields = ['id', 'url', 'name']
+        fields = ['id', 'name']
         read_only_fields = ['id']
 
     def validate_name(self, value: str):
