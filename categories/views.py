@@ -1,3 +1,4 @@
+from rest_framework.reverse import reverse
 from rest_framework.viewsets import ModelViewSet
 from rest_framework import status
 from rest_framework.response import Response
@@ -9,6 +10,14 @@ from .serializers import CategorySerializer
 class CategoryViewSet(ModelViewSet):
     queryset = Category.objects.all_without_deleted()
     serializer_class = CategorySerializer
+
+    def get_success_headers(self, data):
+        try:
+            return {
+                'Location': reverse('category-detail', kwargs={'pk': data['id']}, request=self.request)
+            }
+        except (TypeError, KeyError):
+            return {}
 
     def destroy(self, request, *args, **kwargs):
         instance: Category = self.get_object()
